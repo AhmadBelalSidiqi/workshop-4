@@ -1,0 +1,19 @@
+package com.pluralsight;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DealershipFileMangerTest {
+
+    @org.junit.jupiter.api.Test
+    void getDealership() {
+        Dealership dealership = DealershipFileManger.getDealership();
+        ArrayList<Vehicle> inventory = dealership.getAllVehicle();
+        int actualSize = inventory.size();
+        // As of now there are only 3 cars in the inventory.
+        int expectedSize = 3;
+        assertEquals(expectedSize,actualSize);
+
+    }
+}
