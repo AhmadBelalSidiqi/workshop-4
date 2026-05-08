@@ -1,28 +1,24 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class DealershipFileManger {
-    public static Dealership getDealership(){
+    public static Dealership getDealership() {
         Dealership dealership;
         Vehicle vehicle;
-        String fileLocation ="src/main/resources/inventory.csv";
+        String fileLocation = "src/main/resources/inventory.csv";
         try {
             FileReader fileReader = new FileReader(fileLocation);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String currentLine = bufferedReader.readLine();
             dealership = createDealershipObject(currentLine);
-            while ((currentLine = bufferedReader.readLine()) != null){
+            while ((currentLine = bufferedReader.readLine()) != null) {
                 vehicle = createVehicle(currentLine);
                 dealership.addVehicle(vehicle);
             }
             return dealership;
-
-
         } catch (IOException e) {
-            System.err.println("Wrong file location: "+fileLocation+" "+e);
+            System.err.println("Wrong file location: " + fileLocation + " " + e);
         }
         return null;
 
@@ -38,20 +34,36 @@ public class DealershipFileManger {
         String color = lineSpilt[5];
         int odometer = Integer.parseInt(lineSpilt[6]);
         double price = Double.parseDouble(lineSpilt[7]);
-        return new Vehicle(vin,year,make,model,type,color,odometer,price);
+        return new Vehicle(vin, year, make, model, type, color, odometer, price);
     }
 
-    //TODO : Create the method
-    public static void  saveDealership(Dealership dealerShip){
+    //DONE : Create the method
+    public static void saveDealership(Dealership dealerShip) {
+        String fileLocation = "src/main/resources/inventory.csv";
+        try {
+            FileWriter fileWriter = new FileWriter(fileLocation);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(dealerShip.getName() + "|" + dealerShip.getAddress() + "|" + dealerShip.getPhone());
+            for (Vehicle vehicle : dealerShip.getAllVehicle()) {
+                bufferedWriter.newLine();
+                bufferedWriter.write(vehicle.toString());
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
-    private static Dealership createDealershipObject(String line){
+
+    private static Dealership createDealershipObject(String line) {
         String[] nameAddressNumber = line.split("\\|");
         String name = nameAddressNumber[0];
         String address = nameAddressNumber[1];
         String phoneNumber = nameAddressNumber[2];
 
-        return new Dealership(name,address,phoneNumber);
+        return new Dealership(name, address, phoneNumber);
 
     }
 }
