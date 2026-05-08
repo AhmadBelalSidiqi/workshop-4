@@ -1,14 +1,14 @@
 package com.pluralsight;
 
 public class Vehicle {
-    private int vin;
-    private int year;
-    private String make;
-    private String model;
-    private String vehicleType;
-    private String color;
-    private int odometer;
-    private double price;
+    private final int vin;
+    private final int year;
+    private final String make;
+    private final String model;
+    private final String vehicleType;
+    private final String color;
+    private final int odometer;
+    private final double price;
 
 
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
@@ -26,10 +26,6 @@ public class Vehicle {
         return this.vin+"|"+this.year+"|"+this.make+"|"+this.model+"|"+this.vehicleType+"|"+this.color+"|"+this.odometer+"|"+price;
     }
     // region getters
-    public int getVin() {
-        return vin;
-    }
-
     public int getYear() {
         return year;
     }
@@ -52,6 +48,10 @@ public class Vehicle {
 
     public int getOdometer() {
         return odometer;
+    }
+
+    public int getVin() {
+        return vin;
     }
 
     public double getPrice() {

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DealershipFileMangerTest {
+class DealershipFileManagerTest {
 
     @org.junit.jupiter.api.Test
     void getDealership() {
-        Dealership dealership = DealershipFileManger.getDealership();
+        Dealership dealership = DealershipFileManager.getDealership();
         assert dealership != null;
         ArrayList<Vehicle> inventory = dealership.getAllVehicle();
         int actualSize = inventory.size();

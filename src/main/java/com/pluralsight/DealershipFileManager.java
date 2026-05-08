@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import java.io.*;
 
-public class DealershipFileManger {
+public class DealershipFileManager {
     public static Dealership getDealership() {
         Dealership dealership;
         Vehicle vehicle;

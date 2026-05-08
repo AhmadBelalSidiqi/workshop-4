@@ -10,7 +10,7 @@ public class UserInterface {
     }
 
     public void display() {
-        inti();
+        init();
         boolean running = true;
         while (running) {
             String userInput = UserInput.getUserString("""
@@ -46,8 +46,8 @@ public class UserInterface {
 
     }
 
-    private void inti() {
-        this.dealership = DealershipFileManger.getDealership();
+    private void init() {
+        this.dealership = DealershipFileManager.getDealership();
     }
 
     private void processGetByPriceRequest() {
@@ -90,15 +90,21 @@ public class UserInterface {
 
     private void processAddVehicleRequest() {
         dealership.addVehicle(getVehicle());
-        DealershipFileManger.saveDealership(dealership);
+        DealershipFileManager.saveDealership(dealership);
     }
 
     private void processRemoveVehicleRequest() {
-        dealership.removeVehicle(getVehicle());
-        DealershipFileManger.saveDealership(dealership);
+        int vin = UserInput.getUserInteger("Enter the vin number");
+        for(Vehicle vehicle : dealership.getAllVehicle() )
+            if (vehicle.getVin() == vin) {
+                dealership.removeVehicle(vehicle);
+                DealershipFileManager.saveDealership(dealership);
+                return;
+            }
+
     }
 
-    private void displayVehicles(ArrayList<Vehicle> vehicles) {
+    private static void displayVehicles(ArrayList<Vehicle> vehicles) {
         System.out.println("VIN|YEAR|MAKE|MODEL|TYPE|MILEAGE|PRICE");
         for (Vehicle vehicle : vehicles)
             System.out.println(vehicle);
