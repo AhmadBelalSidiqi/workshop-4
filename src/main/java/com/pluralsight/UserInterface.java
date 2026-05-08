@@ -26,6 +26,7 @@ public class UserInterface {
                 X) Exit the Program""";
         boolean running = true;
         while (running){
+            System.out.println(menu);
             String userInput = scanner.nextLine();
             switch (userInput.toUpperCase()){
                 case "A"->
@@ -56,14 +57,14 @@ public class UserInterface {
     private void inti(){
         this.dealership = DealershipFileManger.getDealership();
     }
-    public void processGetByPriceRequest(){}
-    public void processGetByMakeModeRequest(){}
-    public void processGetByYearRequest(){}
-    public void processGetByMileageRequest(){}
-    public void processGetByVehicleTypeRequest(){}
-    public void processGetAllVehiclesRequest(){}
-    public void processAddVehicleRequest(){}
-    public void processRemoveVehicleRequest(){}
+    private void processGetByPriceRequest(){}
+    private void processGetByMakeModeRequest(){}
+    private void processGetByYearRequest(){}
+    private void processGetByMileageRequest(){}
+    private void processGetByVehicleTypeRequest(){}
+    private void processGetAllVehiclesRequest(){}
+    private void processAddVehicleRequest(){}
+    private void processRemoveVehicleRequest(){}
 
     private void displayVehicles(ArrayList<Vehicle> vehicles){
         System.out.println("VIN|YEAR|MAKE|MODEL|TYPE|MILEAGE|PRICE");
