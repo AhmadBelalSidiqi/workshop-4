@@ -72,9 +72,9 @@ public class Dealership {
         }
         return result;    }
 
-    // DONE: Create the method
+    // DONE:
     public ArrayList<Vehicle> getAllVehicle(){
-        return this.inventory;
+        return new ArrayList<>(this.inventory);
     }
 
     // DONE: Create the method

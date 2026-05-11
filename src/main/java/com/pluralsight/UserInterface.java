@@ -9,6 +9,10 @@ public class UserInterface {
     public UserInterface() {
     }
 
+    private void init() {
+        this.dealership = DealershipFileManager.getDealership();
+    }
+
     public void display() {
         init();
         boolean running = true;
@@ -44,10 +48,6 @@ public class UserInterface {
 
         }
 
-    }
-
-    private void init() {
-        this.dealership = DealershipFileManager.getDealership();
     }
 
     private void processGetByPriceRequest() {

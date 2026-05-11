@@ -3,12 +3,14 @@ package com.pluralsight;
 import java.io.*;
 
 public class DealershipFileManager {
+
+    public static final String FILE_LOCATION = "src/main/resources/inventory.csv";
+
     public static Dealership getDealership() {
         Dealership dealership;
         Vehicle vehicle;
-        String fileLocation = "src/main/resources/inventory.csv";
         try {
-            FileReader fileReader = new FileReader(fileLocation);
+            FileReader fileReader = new FileReader(FILE_LOCATION);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String currentLine = bufferedReader.readLine();
             dealership = createDealershipObject(currentLine);
@@ -18,7 +20,7 @@ public class DealershipFileManager {
             }
             return dealership;
         } catch (IOException e) {
-            System.err.println("Wrong file location: " + fileLocation + " " + e);
+            System.err.println("Wrong file location: " + FILE_LOCATION + " " + e);
         }
         return null;
 
@@ -39,9 +41,8 @@ public class DealershipFileManager {
 
     //DONE : Create the method
     public static void saveDealership(Dealership dealerShip) {
-        String fileLocation = "src/main/resources/inventory.csv";
         try {
-            FileWriter fileWriter = new FileWriter(fileLocation);
+            FileWriter fileWriter = new FileWriter(FILE_LOCATION);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(dealerShip.getName() + "|" + dealerShip.getAddress() + "|" + dealerShip.getPhone());
             for (Vehicle vehicle : dealerShip.getAllVehicle()) {

@@ -6,9 +6,9 @@ public class UserInput {
     private static final Scanner scanner = new Scanner(System.in);
     private UserInput(){}
 
-    public static int getUserInteger(String menu){
+    public static int getUserInteger(String prompt){
         do {
-            System.out.println(menu);
+            System.out.println(prompt);
             String userInput = scanner.nextLine();
             try {
                 return Integer.parseInt(userInput);
@@ -17,9 +17,9 @@ public class UserInput {
             }
         }while(true);
     }
-    public static Double getUserDouble(String menu){
+    public static Double getUserDouble(String prompt){
         do {
-            System.out.println(menu);
+            System.out.println(prompt);
             String userInput = scanner.nextLine();
             try {
                 return Double.parseDouble(userInput);
@@ -29,8 +29,8 @@ public class UserInput {
         }while(true);
     }
 
-    public static String getUserString(String menu){
-        System.out.println(menu);
+    public static String getUserString(String prompt){
+        System.out.println(prompt);
         return scanner.nextLine();
     }
 }
